@@ -34,3 +34,38 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+⚠️ Groq Model Error (Important)
+
+If you see errors like:
+model_decommissioned
+model_not_found
+Error: Pipeline failed
+
+It means the Groq model you are using has been removed or renamed.
+
+Groq frequently deprecates older LLaMA models, so outdated model names will break the pipeline.
+
+❌ Deprecated / invalid models
+
+llama3-70b-8192
+
+llama-3.1-70b-versatile
+
+llama3-groq-70b-tool-use (does not exist)
+
+✅ Fix
+
+Use an active Groq model from:
+https://console.groq.com/docs/models
+
+Recommended stable model for this project:
+llama-3.1-8b-instant
+
+Update this in all agent files:
+model: "llama-3.1-8b-instant"
+
+Then restart:
+npm run dev
+
