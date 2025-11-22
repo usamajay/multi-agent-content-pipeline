@@ -1,71 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🧠 Multi-Agent Content Pipeline (Next.js + Supabase + Groq + TipTap Editor)
+🚀 Live Demo: https://multi-agent-content-pipeline.vercel.app
 
-## Getting Started
+An AI-powered multi-agent workflow that transforms a PRD into a polished article using multiple intelligent agents:
 
-First, run the development server:
+Researcher Agent
 
-```bash
+Writer Agent
+
+Fact-Checker Agent
+
+Polisher Agent
+
+Includes a full dashboard, article editor, PDF export, and Supabase storage.
+
+✨ Features
+🤖 AI Multi-Agent Workflow
+
+Each agent performs a unique task:
+
+🧠 Researcher → Extracts insights
+
+✍️ Writer → Produces structured draft
+
+🛡 Fact-Checker → Verifies claims
+
+✨ Polisher → Produces final human-quality content
+
+Includes animated timeline showing each step in real-time.
+
+📄 Article Management Dashboard
+
+Save final articles to Supabase
+
+View all saved articles
+
+Edit articles using TipTap Rich-Text Editor
+
+Delete articles
+
+Export final content as PDF
+
+🎨 Modern UI
+
+Tailwind CSS
+
+Animated steps UI
+
+Slide-up modal for agent logs
+
+Clean & professional dashboard
+
+🏗 Tech Stack
+Layer	Technology
+Frontend	Next.js 15+, TailwindCSS
+Backend	Next.js API Routes
+Database	Supabase
+AI Models	Groq (Llama 3.1)
+Editor	TipTap
+UI Effects	Framer Motion
+📂 Project Structure
+/app
+  /api
+    generate/route.ts  → Multi-agent pipeline
+    save/route.ts      → Save article
+    list/route.ts      → Fetch saved articles
+    article/route.ts   → Get one article
+    update/route.ts    → Update one article
+    delete/route.ts    → Delete article
+  page.tsx              → Main UI
+  /dashboard
+    page.tsx            → List articles
+    /[id]/page.tsx      → Edit article
+/components
+  Timeline.tsx
+  AgentLogs.tsx
+  RichEditor.tsx
+/lib
+  supabaseClient.ts
+  groq.ts
+
+⚙️ Local Setup
+1️⃣ Clone Repo
+git clone https://github.com/usamajay/multi-agent-content-pipeline.git
+cd multi-agent-content-pipeline
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Setup Environment Variables
+
+Create a file:
+
+.env.local
+
+
+Add:
+
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+GROQ_API_KEY=your_key
+
+4️⃣ Run Dev Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🚀 Deploying to Vercel
+Step 1 — Go to Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://vercel.com/new
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Step 2 — Import GitHub Repository
 
-## Learn More
+Select:
 
-To learn more about Next.js, take a look at the following resources:
+usamajay/multi-agent-content-pipeline
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Step 3 — Add Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+In Vercel → Project → Settings → Environment Variables
 
-## Deploy on Vercel
+Add:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Key	Value
+NEXT_PUBLIC_SUPABASE_URL	your Supabase URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY	your Supabase anon key
+GROQ_API_KEY	your Groq API key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then click Redeploy.
 
+Step 4 — You’re Live 🎉
 
-⚠️ Groq Model Error (Important)
+Your live link (already deployed):
 
-If you see errors like:
-model_decommissioned
-model_not_found
-Error: Pipeline failed
+https://multi-agent-content-pipeline.vercel.app
 
-It means the Groq model you are using has been removed or renamed.
+❗Troubleshooting
+Groq "model_decommissioned" error
 
-Groq frequently deprecates older LLaMA models, so outdated model names will break the pipeline.
+Use the updated model:
 
-❌ Deprecated / invalid models
+model: "llama-3.1-70b-versatile"
 
-llama3-70b-8192
+Dashboard shows empty
 
-llama-3.1-70b-versatile
+Fix: ensure Supabase URL & keys are correct both locally & in Vercel.
 
-llama3-groq-70b-tool-use (does not exist)
+⭐ Show Support
 
-✅ Fix
-
-Use an active Groq model from:
-https://console.groq.com/docs/models
-
-Recommended stable model for this project:
-llama-3.1-8b-instant
-
-Update this in all agent files:
-model: "llama-3.1-8b-instant"
-
-Then restart:
-npm run dev
-
+If you like this project, consider giving the repo a GitHub star ⭐!
